@@ -1,0 +1,16 @@
+{
+  "name": "letters",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "start-client": "pnpm -F @letters/client run dev",
+    "start-server": "pnpm -F @letters/server run start"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "devDependencies": {
+    "prettier": "3.5.3"
+  }
+}
