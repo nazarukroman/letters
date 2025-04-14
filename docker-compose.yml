@@ -4,8 +4,8 @@ services:
     container_name: mariadb
     restart: unless-stopped
     env_file:
-      - ./server/.env
+      - .env
     ports:
-      - "3306:3306"
+      - '3306:3306'
     volumes:
       - ./server/db/words-russian-nouns.sql:/docker-entrypoint-initdb.d/words-russian-nouns.sql:ro
