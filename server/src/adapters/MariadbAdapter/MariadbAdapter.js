@@ -15,7 +15,9 @@ export class MariadbAdapter extends DatabaseAdapter {
     } catch (err) {
       throw err;
     } finally {
-      if (connection) connection.end();
+      if (connection) {
+        connection.end();
+      }
     }
   }
 }

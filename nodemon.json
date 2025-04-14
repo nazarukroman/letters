@@ -1,0 +1,6 @@
+{
+  "verbose": true,
+  "watch": ["server"],
+  "ext": "js",
+  "exec": "node server/src/main.js"
+}

@@ -9,8 +9,6 @@ export class WordsController {
     if (!result.isOk) {
       context.status(500);
 
-      console.log('Result error', result.error);
-
       return context.json(result.error.message);
     }
 
