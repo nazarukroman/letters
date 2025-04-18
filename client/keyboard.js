@@ -22,6 +22,31 @@ function main() {
         input.addEventListener('input', handleInput);
         input.addEventListener('keydown', handleKeyDown);
         input.addEventListener('contextmenu', handleContextMenu);
+        input.addEventListener('touchstart', handleContextMenu);
+        // input.addEventListener('touchstart', handleTouchStart, false);
+        // input.addEventListener('touchend', handleTouchEnd, false);
+
+        // let onLongTouch;
+        // let timer;
+        // const touchDuration = 300;
+
+        // function handleTouchStart(event) {
+        //   if (!timer) {
+        //     timer = setTimeout(() => onLongTouch(event), touchDuration);
+        //   }
+        // }
+
+        // function handleTouchEnd() {
+        //   if (timer) {
+        //     clearTimeout(timer);
+        //     timer = null;
+        //   }
+        // }
+
+        // onLongTouch = (event) => {
+        //   timer = null;
+        //   handleContextMenu.call(this, event);
+        // };
 
         container.appendChild(input);
       }
@@ -91,11 +116,11 @@ function main() {
   }
 
   function handleContextMenu(event) {
-    event.preventDefault();
-
     if (!this.value) {
       return;
     }
+
+    event.preventDefault();
 
     this.focus();
 

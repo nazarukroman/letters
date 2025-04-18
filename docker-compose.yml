@@ -4,19 +4,26 @@ services:
     container_name: letters
     restart: unless-stopped
     depends_on:
-      - db
+      mariadb:
+        condition: service_healthy
     env_file:
       - .env
     ports:
-      - '3000:3000'
+      - '${CLIENT_PORT:-3000}:${CLIENT_PORT:-3000}'
 
-  db:
+  mariadb:
     image: mariadb
     container_name: mariadb
     restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
     env_file:
       - .env
-    ports:
-      - '3306:3306'
+    # ports:
+    #   - '${DB_PORT:-3306}:${DB_PORT:-3306}'
     volumes:
       - ./db/words-russian-nouns.sql:/docker-entrypoint-initdb.d/words-russian-nouns.sql:ro
