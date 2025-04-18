@@ -99,7 +99,8 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   text-align: center;
-  font-size: clamp(20px, 6vw, 32px);
+  font-size: 32px;
+  font-weight: 700;
   border: 2px solid var(--primary-color);
   border-radius: var(--border-radius);
   outline: none;

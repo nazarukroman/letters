@@ -8,7 +8,15 @@ const app = new Hono();
 
 registerRoutes(app);
 
-const server = serve({ fetch: app.fetch, port: 3000, hostname: '0.0.0.0' }, (info) => {
+app.use('*', async (ctx, next) => {
+  const { method, url } = ctx.req;
+  console.log(`[${new Date().toISOString()}] → ${method} ${url}`);
+  await next();
+});
+
+const port = parseInt(process.env.CLIENT_PORT, 10) || 3000;
+
+const server = serve({ fetch: app.fetch, port }, (info) => {
   console.log(`Listening on http://${info.address}:${info.port}`);
 });
 
