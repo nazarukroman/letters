@@ -1,24 +1,21 @@
-FROM node:20-alpine AS builder
+FROM node:23-alpine AS builder
 
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
 
-RUN apk add --no-cache curl \
- && corepack enable \
- && corepack prepare pnpm@latest --activate \
- && pnpm install --frozen-lockfile
+RUN corepack enable && corepack prepare pnpm@latest --activate && pnpm install --frozen-lockfile
 
-COPY . .
+COPY src ./src
 
-FROM node:20-alpine
+RUN pnpm run build
+
+FROM node:23-alpine AS runner
 
 WORKDIR /app
 
-COPY --from=builder /app /app
+COPY --from=builder /app/dist ./dist
 
 ENV NODE_ENV=production
-
 EXPOSE 3000
-
-CMD ["node", "main.js"]
+CMD ["node", "dist/index.js"]

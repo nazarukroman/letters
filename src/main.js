@@ -8,8 +8,8 @@ const app = new Hono();
 
 registerRoutes(app);
 
-const server = serve(app, (info) => {
-  console.log(`Listening on http://localhost:${info.port}`);
+const server = serve({ fetch: app.fetch, port: 3000, hostname: '0.0.0.0' }, (info) => {
+  console.log(`Listening on http://${info.address}:${info.port}`);
 });
 
 process.on('SIGTERM', () => {

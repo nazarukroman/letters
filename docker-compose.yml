@@ -1,20 +1,22 @@
 services:
   client:
-    image: letters-app
-    container_name: letters-client
+    image: letters
+    container_name: letters
     restart: unless-stopped
+    depends_on:
+      - db
     env_file:
       - .env
     ports:
       - '3000:3000'
 
-#  db:
-#    image: mariadb
-#    container_name: mariadb
-#    restart: unless-stopped
-#    env_file:
-#      - .env
-#    ports:
-#      - '3306:3306'
-#    volumes:
-#      - ./db/words-russian-nouns.sql:/docker-entrypoint-initdb.d/words-russian-nouns.sql:ro
+  db:
+    image: mariadb
+    container_name: mariadb
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./db/words-russian-nouns.sql:/docker-entrypoint-initdb.d/words-russian-nouns.sql:ro
