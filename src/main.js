@@ -9,13 +9,13 @@ const app = new Hono();
 registerRoutes(app);
 
 const server = serve(app, (info) => {
-  console.log(`Listening on http://localhost:${info.port}`); // Listening on http://localhost:3000
+  console.log(`Listening on http://localhost:${info.port}`);
 });
 
 process.on('SIGTERM', () => {
   console.log('Получен SIGTERM. Завершаем...');
-  server.close?.(); // если `serve()` возвращает сервер с методом close()
-  process.exit(0); // вручную завершаем процесс
+  server.close?.();
+  process.exit(0);
 });
 
 process.on('SIGINT', () => {
