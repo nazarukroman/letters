@@ -15,7 +15,9 @@
 ---
 
 ## Screenshots
-![image ](./screenshots/overview.png)
+<p align="center">
+  <img src="./screenshots/overview.png" alt="Overview" width="300" />
+</p>
 
 ---
 
