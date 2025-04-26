@@ -1,9 +1,9 @@
 function main() {
   const WORDS_COUNT = 30;
   const API = {
-    GET_RANDOM: `/api/words/random?count=${WORDS_COUNT}`,
-    GET_BY_PATTERN: '/api/words/pattern',
-    GET_BY_PATTERN_WITHOUT_REPETITIONS: '/api/words/pattern-without-repetitions',
+    GET_RANDOM: `/api/words/search?count=${WORDS_COUNT}&random=true`,
+    GET_BY_PATTERN: '/api/words/search',
+    GET_BY_PATTERN_WITHOUT_REPETITIONS: '/api/words/search?unique=true',
   };
   const generateUnusedButton = document.getElementById('generate-unused-btn');
   const generateRandomButton = document.getElementById('generate-random-btn');
@@ -23,10 +23,10 @@ function main() {
     );
 
     flattenStore.length === 0
-      ? fetch(API.GET_RANDOM)
+      ? fetch(API.GET_RANDOM, {method: 'POST'})
           .then((response) => response.json())
           .then((result) => {
-            renderWords(result.list || []);
+            renderWords(result || []);
           })
       : fetchWordsByPattern(API.GET_BY_PATTERN, flattenStore);
   }
@@ -41,7 +41,7 @@ function main() {
     })
       .then((response) => response.json())
       .then((result) => {
-        renderWords(result.list || []);
+        renderWords(result || []);
       });
   }
 

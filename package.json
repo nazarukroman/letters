@@ -1,0 +1,13 @@
+{
+  "name": "letters",
+  "version": "1.0.0",
+  "description": "5letters helpers app",
+  "author": "Nazaruk Roman",
+  "license": "ISC",
+  "scripts": {
+    "client": "pnpm -F client run dev"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.3"
+  }
+}
