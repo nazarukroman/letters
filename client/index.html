@@ -1,31 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <title>5букв</title>
-    <link rel="stylesheet" href="/themes.css" />
-    <link rel="stylesheet" href="/styles.css" />
-    <script type="text/javascript" src="/store.js"></script>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5Букв: Помощник</title>
   </head>
-  <body class="body">
-    <div class="container">
-      <header class="header">
-        <button id="generate-unused-btn" class="button button--secondary button--small" type="button">
-          Слова без повторов
-        </button>
-        <button id="generate-random-btn" class="button button--secondary button--small" type="button">
-          Найти слова
-        </button>
-      </header>
-
-      <article id="info" class="info"></article>
-
-      <section id="keyboard" class="keyboard"></section>
-    </div>
-
-    <script type="text/javascript" src="/generate.js"></script>
-    <script type="text/javascript" src="/keyboard.js"></script>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>

@@ -27,7 +27,7 @@ function main() {
    *
    * @type {KeyCell[][]}
    */
-  window.keyboardStore = Array.from({ length: 6 }, () =>
+  window.keyboardStore = Array.from({ length: 5 }, () =>
     Array.from({ length: 5 }, (_, index) => ({ letter: '', state: 'empty', position: index })),
   );
   window.STATE_TYPE = STATE_TYPE;
