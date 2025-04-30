@@ -5,9 +5,6 @@
   "author": "Nazaruk Roman",
   "license": "ISC",
   "scripts": {
-    "client": "pnpm -F client run dev"
-  },
-  "devDependencies": {
-    "esbuild": "^0.25.3"
+    "dev": "pnpm -F client run dev"
   }
 }
