@@ -1,7 +1,7 @@
 services:
   web:
     image: letters
-    container_name: server
+    container_name: letters
     restart: unless-stopped
     depends_on:
       - db
