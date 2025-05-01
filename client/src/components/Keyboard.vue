@@ -117,7 +117,7 @@ function handleContextMenu(rowIndex, cellIndex, event) {
   width: 100%;
   aspect-ratio: 1 / 1;
   text-align: center;
-  font-size: 36px;
+  font-size: 32px;
   font-weight: bold;
   border: 1px solid var(--primary-color);
   border-radius: var(--border-radius);
