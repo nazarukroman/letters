@@ -1,8 +1,8 @@
 use crate::models::request::WordSearchRequest;
 use crate::models::response::WordSearchResult;
 use crate::sql::BASE_SQL;
+use crate::utils::filter_unique_words::filter_unique_words;
 use crate::utils::sql_builder::build_sql;
-use crate::utils::uniq_words::is_word_with_uniq_letters;
 use axum::{Extension, Json, Router, http::StatusCode, response::IntoResponse, routing::post};
 use sqlx::{MySqlPool, query_as};
 use std::sync::Arc;
@@ -45,7 +45,7 @@ async fn search_words(
     })?;
 
     if body.unique {
-        rows.retain(|row| is_word_with_uniq_letters(&row.word));
+        rows = filter_unique_words(rows, &body.list);
     }
 
     Ok((StatusCode::OK, Json(rows)))
