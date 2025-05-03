@@ -18,7 +18,6 @@ pub struct LetterPattern {
 #[derive(Deserialize)]
 #[serde(default)]
 pub struct WordSearchRequest {
-    pub unique: bool,
     pub random: bool,
     pub count: Option<u32>,
     pub list: Vec<LetterPattern>,
@@ -27,8 +26,23 @@ pub struct WordSearchRequest {
 impl Default for WordSearchRequest {
     fn default() -> Self {
         Self {
-            unique: false,
             random: true,
+            count: None,
+            list: Vec::new(),
+        }
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(default)]
+pub struct WordSearchUniqueResult {
+    pub count: Option<u32>,
+    pub list: Vec<LetterPattern>,
+}
+
+impl Default for WordSearchUniqueResult {
+    fn default() -> Self {
+        Self {
             count: None,
             list: Vec::new(),
         }
