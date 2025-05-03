@@ -35,9 +35,7 @@ export class ApiService {
   }
 
   async getUniqueWords(pattern) {
-    const result = await this.apiRepository.getRandomWords({
-      random: false,
-      unique: true,
+    const result = await this.apiRepository.getUniqueWords({
       list: this.#flatKeyboardStore(pattern),
     });
 
