@@ -94,6 +94,7 @@ function handleContextMenu(rowIndex, cellIndex, event) {
         @keydown.right="handleRight"
         @contextmenu.prevent="handleContextMenu(rowIndex, cellIndex, $event)"
         @touchstart="handleContextMenu(rowIndex, cellIndex, $event)"
+        @click="handleContextMenu(rowIndex, cellIndex, $event)"
       />
     </div>
   </section>
