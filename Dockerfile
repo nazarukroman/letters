@@ -1,30 +1,46 @@
-FROM clux/muslrust:stable AS builder
-RUN groupadd -g 10001 -r dockergrp && useradd -r -g dockergrp -u 10001 dockeruser
+FROM node:lts-alpine AS builder
 WORKDIR /app
-COPY ./Cargo.lock ./Cargo.lock
-COPY ./Cargo.toml ./Cargo.toml
-COPY ./server ./server
-RUN rustup target add x86_64-unknown-linux-musl
-RUN cargo build -p server --release --target x86_64-unknown-linux-musl
 
-
-FROM node:lts-alpine AS client-builder
-WORKDIR /app
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
-COPY ./package.json ./package.json
-COPY ./pnpm-lock.yaml ./pnpm-lock.yaml
-COPY ./pnpm-workspace.yaml ./pnpm-workspace.yaml
-COPY ./client ./client
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY client/package.json client/
+COPY server/package.json server/
+
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+
+COPY client/ client/
 RUN pnpm -F client run build
 
-FROM scratch
-COPY --from=0 /etc/passwd /etc/passwd
-USER dockeruser
-ARG BINARY_NAME
-ENV RUST_LOG="error,$BINARY_NAME=info"
-COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/server /server
-COPY --from=client-builder /app/client/dist /client/dist
-CMD ["/server"]
+COPY db/words.tsv db/
+COPY server/ server/
+RUN pnpm -F letters-server run seed
+
+FROM node:lts-alpine
+WORKDIR /app
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY server/package.json server/
+
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod
+
+COPY server/src/ server/src/
+COPY --from=builder /app/client/dist client/dist
+COPY --from=builder /app/db/words.db db/words.db
+
+RUN addgroup -g 10001 -S appgrp && adduser -u 10001 -S appusr -G appgrp \
+    && chown appusr:appgrp db/words.db
+USER appusr
+
+ENV SERVER_PORT=4000
+ENV STATIC_DIR_PATH=/app/client/dist
+ENV DB_PATH=/app/db/words.db
+
+EXPOSE 4000
+CMD ["node", "server/src/index.js"]
