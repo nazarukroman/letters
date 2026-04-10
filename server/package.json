@@ -1,0 +1,16 @@
+{
+  "name": "letters-server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "seed": "node src/seed.js"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.14.1",
+    "@libsql/client": "^0.15.5",
+    "hono": "^4.7.6"
+  }
+}
