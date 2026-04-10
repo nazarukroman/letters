@@ -5,6 +5,14 @@
   "author": "Nazaruk Roman",
   "license": "ISC",
   "scripts": {
-    "dev": "pnpm -F client run dev"
+    "dev": "pnpm -F client run dev",
+    "dev:server": "pnpm -F letters-server run dev",
+    "build": "pnpm -F client run build",
+    "seed": "pnpm -F letters-server run seed"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
