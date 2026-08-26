@@ -4,7 +4,7 @@ const MARKED_STATES = ['correct', 'present', 'absent'];
 
 function createGrid(rows, cols) {
   return Array.from({ length: rows }, () =>
-    Array.from({ length: cols }, (_, i) => signal({ letter: '', state: 'empty', position: i }))
+    Array.from({ length: cols }, (_, i) => signal({ letter: '', state: 'empty', position: i })),
   );
 }
 

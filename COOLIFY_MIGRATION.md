@@ -30,7 +30,7 @@ services:
     volumes:
       - letters_db:/app/db
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:4000/ || exit 1"]
+      test: ['CMD-SHELL', 'wget -qO- http://localhost:4000/ || exit 1']
       interval: 30s
       timeout: 5s
       retries: 3
@@ -120,7 +120,7 @@ verify, then switch the production domain.
 In the `applications` repo, mark letters as active in `PORTS.md`:
 
 | App     | Host port | Container port | Status |
-|---------|-----------|----------------|--------|
+| ------- | --------- | -------------- | ------ |
 | letters | 8094      | 4000           | active |
 
 Commit this together with the removal of `apps/letters/` from the monorepo.

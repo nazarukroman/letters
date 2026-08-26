@@ -41,6 +41,7 @@ Run `pnpm dev` and `pnpm dev:server` in parallel for local development.
 ## Environment Variables
 
 All optional with defaults:
+
 - `SERVER_PORT` — backend port (default 4000)
 - `STATIC_DIR_PATH` — path to built frontend (default `client/dist`)
 - `DB_PATH` — path to SQLite database (default `db/words.db`)
