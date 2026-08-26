@@ -9,13 +9,7 @@ export function Results() {
     <div class="results-section">
       <div class="results-header">
         <span class="results-title">Подходящие слова</span>
-        <span class="results-count">
-          {isLoading ? (
-            <span class="spinner" />
-          ) : count !== null ? (
-            `${count}`
-          ) : null}
-        </span>
+        <span class="results-count">{isLoading ? <span class="spinner" /> : count !== null ? `${count}` : null}</span>
       </div>
       <div class="results-list">
         {list.length > 0 ? (
@@ -32,11 +26,7 @@ export function Results() {
             ))}
           </div>
         ) : (
-          <div class="results-empty">
-            {count === 0
-              ? 'Ничего не найдено'
-              : 'Отметьте буквы для поиска'}
-          </div>
+          <div class="results-empty">{count === 0 ? 'Ничего не найдено' : 'Отметьте буквы для поиска'}</div>
         )}
       </div>
     </div>

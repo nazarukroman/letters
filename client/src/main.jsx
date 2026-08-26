@@ -14,7 +14,9 @@ function App() {
         <h1>Letters</h1>
         <div class="header-actions">
           {count !== null && !isLoading && (
-            <span class="badge">{count} {pluralize(count)}</span>
+            <span class="badge">
+              {count} {pluralize(count)}
+            </span>
           )}
           <button class="btn-reset" onClick={resetGrid}>
             Сброс
