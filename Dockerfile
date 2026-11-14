@@ -1,4 +1,4 @@
-FROM node:lts-alpine AS builder
+FROM node:24.15.0-alpine3.23@sha256:d1b3b4da11eefd5941e7f0b9cf17783fc99d9c6fc34884a665f40a06dbdfc94f AS builder
 WORKDIR /app
 
 ENV PNPM_HOME="/pnpm"
@@ -18,7 +18,7 @@ COPY db/words.tsv db/
 COPY server/ server/
 RUN pnpm -F letters-server run seed
 
-FROM node:lts-alpine
+FROM node:24.15.0-alpine3.23@sha256:d1b3b4da11eefd5941e7f0b9cf17783fc99d9c6fc34884a665f40a06dbdfc94f
 WORKDIR /app
 
 ENV PNPM_HOME="/pnpm"

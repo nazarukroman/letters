@@ -27,14 +27,14 @@ importers:
   server:
     dependencies:
       '@hono/node-server':
-        specifier: ^1.14.1
-        version: 1.19.13(hono@4.12.12)
+        specifier: ^1.19.18
+        version: 1.19.18(hono@4.13.18)
       '@libsql/client':
         specifier: ^0.15.5
         version: 0.15.15
       hono:
-        specifier: ^4.7.6
-        version: 4.12.12
+        specifier: ^4.13.18
+        version: 4.13.18
 
 packages:
 
@@ -281,8 +281,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@hono/node-server@1.19.13':
-    resolution: {integrity: sha512-TsQLe4i2gvoTtrHje625ngThGBySOgSK3Xo2XRYOdqGN1teR8+I7vchQC46uLJi8OF62YTYA3AhSpumtkhsaKQ==}
+  '@hono/node-server@1.19.18':
+    resolution: {integrity: sha512-609kppIP9GITS+EwPyB6Kiq8z2yXONaYD1VHpo7MMP9celRJYbkFr9KakJncHwK0EK/XYtlogqmrLchDv5HX5w==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
       hono: ^4
@@ -643,8 +643,8 @@ packages:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
 
-  hono@4.12.12:
-    resolution: {integrity: sha512-p1JfQMKaceuCbpJKAPKVqyqviZdS0eUxH9v82oWo1kb9xjQ5wA6iP3FNVAPDFlz5/p7d45lO+BpSk1tuSZMF4Q==}
+  hono@4.13.18:
+    resolution: {integrity: sha512-H9q/E1XizaWstJxUW881dmLxEj+t/TrGGnyxINkm4+sK0qUwsMtFdo2BWI9Vs3cIS19MU6b6iCijoUoEf4f3DA==}
     engines: {node: '>=16.9.0'}
 
   js-base64@3.7.8:
@@ -1034,9 +1034,9 @@ snapshots:
   '@esbuild/win32-x64@0.25.3':
     optional: true
 
-  '@hono/node-server@1.19.13(hono@4.12.12)':
+  '@hono/node-server@1.19.18(hono@4.13.18)':
     dependencies:
-      hono: 4.12.12
+      hono: 4.13.18
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -1364,7 +1364,7 @@ snapshots:
 
   he@1.2.0: {}
 
-  hono@4.12.12: {}
+  hono@4.13.18: {}
 
   js-base64@3.7.8: {}
 
